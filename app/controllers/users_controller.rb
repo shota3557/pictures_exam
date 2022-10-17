@@ -38,6 +38,10 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def confirm
+    @user = User.new(user_params)
+  end
+
   private
     def set_user
       @user = User.find(params[:id])
