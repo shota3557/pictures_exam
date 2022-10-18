@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :barrier_user, only: [:edit, :destroy]
   def index
     @blogs = Blog.all
   end
@@ -8,7 +9,16 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog = Blog.new
+    if params[:back]
+      @blog = Blog.new(blog_params)
+    else
+      @blog = Blog.new  
+    end
+  end
+
+  def confirm
+    @blog = current_user.blogs.build(blog_params)
+    render :new if @blog.invalid?
   end
 
   def edit
@@ -42,5 +52,12 @@ class BlogsController < ApplicationController
   private
     def blog_params
       params.require(:blog).permit(:content, :image, :image_cache)
+    end
+
+    def barrier_user
+      unless Blog.find_by(id: params[:id]).user_id == current_user.id
+        flash[:notice] = "あなたは編集できません"
+        redirect_to blogs_path
+      end
     end
 end
