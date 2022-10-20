@@ -1,5 +1,8 @@
 {
   "name": "fakebook",
+  "scripts":{
+    "develop": "NODE_OPTIONS='--openssl-legacy-provider' gatsby develop"
+  },
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -14,4 +17,6 @@
   "devDependencies": {
     "webpack-dev-server": "^3"
   }
+
+
 }
