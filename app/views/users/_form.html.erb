@@ -1,0 +1,44 @@
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "個") %>のエラーがあるので、確認してください。</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% if action_name == 'edit' %>
+    <%= form.label :プロフィール画像 %>
+    <%= form.file_field :image %>
+    <% end %>
+  </div>
+
+  <div class="name_field">
+    <%= form.label :名前 %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="email_field">
+    <%= form.label :メールアドレス %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field_password">
+    <%= form.label :パスワード %>
+    <%= form.password_field :password %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :パスワード確認画面 %>
+    <%= form.password_field :password %>
+  </div>
+ 
+  <div class="actions">
+    <%= form.submit :登録する %>
+  </div>
+<% end %>
