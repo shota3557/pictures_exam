@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<header>
 <h1>お気に入り一覧</h1>
+</header>
 
 <table>
   <thead>
@@ -15,8 +16,8 @@
   <tbody>
     <% @favorites.each do |favorite| %>
       <tr>
-        <td><%= favorite.user_id %></td>
-        <td><%= favorite.blog_id %></td>
+        <td><%= favorite.user.name %></td>
+        <td><%= favorite.blog.content %></td>
         <td><%= image_tag favorite.blog.image.url %></td>
       </tr>
     <% end %>
@@ -27,3 +28,7 @@
 
 <%= link_to '投稿一覧へ', blogs_path %>
 <%= link_to '新規投稿へ', new_blog_path %>
+
+<footer>
+<p>fakebook</p>
+</footer>
