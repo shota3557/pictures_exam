@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<header>
+<h1><%= @user.name %>の詳細ページ</h1>
+</header>
+
+<p>
+  <strong>あなたの写真</strong>
+  <%= image_tag @user.image.url unless @user.image.url == nil%>
+</p>
+
+<p>
+  <strong>あなたの名前:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>あなたのメールアドレス:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'プロフィールを変更する', edit_user_path %> |
+<%= link_to 'お気に入り一覧ページへ', favorites_path %>
+
+<footer>
+<p>fakebook</p>
+</footer>
