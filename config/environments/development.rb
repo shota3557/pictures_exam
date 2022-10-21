@@ -24,8 +24,6 @@ Rails.application.configure do
   config.active_storage.service = :local
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'fast-reaches-67749.herokuapp.com/' }
-  config.action_mailer.delivery_method = :letter_opener_web
   config.active_support.deprecation = :log
   config.active_support.disallowed_deprecation = :raise
   config.active_support.disallowed_deprecation_warnings = []
