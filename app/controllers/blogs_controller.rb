@@ -50,14 +50,13 @@ class BlogsController < ApplicationController
   end
 
   private
-    def blog_params
-      params.require(:blog).permit(:content, :image, :image_cache)
+  def blog_params
+    params.require(:blog).permit(:content, :image, :image_cache)
+  end
+  def barrier_user
+    unless Blog.find_by(id: params[:id]).user_id == current_user.id
+      flash[:notice] = "あなたは編集できません"
+      redirect_to blogs_path
     end
-
-    def barrier_user
-      unless Blog.find_by(id: params[:id]).user_id == current_user.id
-        flash[:notice] = "あなたは編集できません"
-        redirect_to blogs_path
-      end
-    end
+  end
 end
