@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
+  before_action :correct_user, only: [:edit, :destroy]
   def index
     @users = User.all
   end
@@ -47,5 +48,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to user_path(params[:id]) unless @user == current_user
   end
 end
