@@ -20,6 +20,8 @@ gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
 gem 'letter_opener_web'
+gem 'fog-aws'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
