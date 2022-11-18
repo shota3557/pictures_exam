@@ -5,7 +5,7 @@ Rails.application.configure do
   config.eager_load = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  config.action_mailer.default_url_options = { host: 'fast-reaches-67749.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: '13.113.166.245' }
   config.action_mailer.delivery_method = :letter_opener_web
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.assets.compile = false
